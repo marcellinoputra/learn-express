@@ -16,6 +16,7 @@ function jurusanGET(callback) {
 
 //Post Method
 function jurusanPOST(body, callback) {
+  console.log(body)
   connectDatabase.connection.query(
     `INSERT INTO jurusan(jurusan) VALUES ('${body.jurusan}')`,
     function (err, result) {
@@ -29,6 +30,6 @@ function jurusanPOST(body, callback) {
 }
 
 module.exports = {
-  mahasiswaGET,
-  mahasiswaPOST,
+  jurusanGET,
+  jurusanPOST,
 };

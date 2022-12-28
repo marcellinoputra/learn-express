@@ -6,6 +6,12 @@ const connection = mysql.createConnection({
   database: 'campus',
 });
 
+connection.connect(function(err){
+  if(err) console.log(err)
+
+  console.log("Database Connected")
+})
+
 module.exports = {
   connection,
 };
