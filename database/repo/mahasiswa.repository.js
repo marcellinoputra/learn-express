@@ -28,7 +28,21 @@ function mahasiswaPOST(body, callback) {
   );
 }
 
+function mahasiswaDELETE(body, callback) {
+  connectDatabase.connection.query(
+    `DELETE FROM mahasiswa WHERE id = ${body.id}`,
+    function (err, result) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    }
+  );
+}
+
 module.exports = {
   mahasiswaGET,
   mahasiswaPOST,
+  mahasiswaDELETE,
 };

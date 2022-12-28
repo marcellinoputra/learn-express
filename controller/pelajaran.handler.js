@@ -1,8 +1,8 @@
-const repo = require('../database/repo/jurusan.repository');
+const repo = require('../database/repo/pelajaran.repository');
 const { validationResult } = require('express-validator');
 
-function jurusanGETController(req, res) {
-  repo.jurusanGET(function (err, result) {
+function pelajaranGETController(req, res) {
+  repo.pelajaranGET(function (err, result) {
     if (err) {
       res.status(400).send({
         message: 'Something Went Wrong',
@@ -11,13 +11,13 @@ function jurusanGETController(req, res) {
       res.status(200).send({
         status: 200,
         data: result,
-        message: 'Successfully GET Data Jurusan',
+        message: 'Successfully GET Data Pelajaran',
       });
     }
   });
 }
 
-function jurusanPOSTController(req, res) {
+function pelajaranPOSTController(req, res) {
   const error = validationResult(req);
 
   if (!error.isEmpty()) {
@@ -25,7 +25,7 @@ function jurusanPOSTController(req, res) {
       message: error.array(),
     });
   } else {
-    repo.jurusanPOST(req.body, function (err, result) {
+    repo.pelajaranPOST(req.body, function (err, result) {
       if (err) {
         return res.status(400).send({
           message: 'Something Went Wrong',
@@ -33,7 +33,7 @@ function jurusanPOSTController(req, res) {
       } else {
         return res.status(201).send({
           status: 201,
-          message: 'Successfully Add Jurusan',
+          message: 'Successfully Add Pelajaran',
         });
       }
     });
@@ -41,6 +41,6 @@ function jurusanPOSTController(req, res) {
 }
 
 module.exports = {
-  jurusanGETController,
-  jurusanPOSTController,
+  pelajaranGETController,
+  pelajaranPOSTController,
 };
